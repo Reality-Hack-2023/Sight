@@ -14,6 +14,18 @@
 * UnityNativeCamera:  https://github.com/yasirkula/UnityNativeCamera 
 * ChatGPT to solve some problems ;) 
 
+## How Application is working on Snapdragon Spaces Lenovo ThinkReality?
+Our project utilizes YOLO (AI) for object detection such as aeroplanes, bicycles, birds, boats, bottles, buses, cars, cats, chairs, cows, dining tables, dogs, horses, motorbikes, people, potted plants, sheep, sofas, trains, and TV monitors. It does this every 800 frames using image data from a camera. The volume of sound produced is dependent on the object being detected and is divided into 8 different categories (with plans to expand in the future). The distance from the object is determined by the size of the object recognized by YOLO and in newer versions we will be adding depth recognition as well.
+
+## Builds and videos:
+* ![MacDemo](\Builds\Ben Vision_SoundScapes Demo_Unity Build_Mac.zip)
+* ![Windows](\Builds\Ben Vision_SoundScapes Demo_Window.zip)
+* ![ThinkReality](\Builds\sight.apk)
+## Videos
+* ![Introduction](\Builds\Introducing_BenVision_v3.mp4)
+* ![DemoVideo](\Builds\Ben Vision_SoundScapes Demo_Video.mp4)
+
+
 ### 2020
 Toolchain:
 * Android Studio 4.0.1
