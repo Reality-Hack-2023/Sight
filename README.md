@@ -3,16 +3,16 @@
 
 ## How it works?
 
-# Our solution uses an augmented reality camera, enhanced with a real-time machine learning algorithm and then converts those objects into a harmonious soundscape. Every stationary object in the environment is then associated with a unique chord, providing a one-of-a-kind beautiful interactive synesthetic experience.
+## Our solution uses a depth sensing camera, enhanced with a real-time machine learning algorithm, to identify objects and convert them into a harmonious soundscape as the user moves through the environment. Every stationary object in the environment is associated with a unique ambient sounds, while haptics indicate whether they are interactive, providing a one-of-a-kind beautiful synesthetic experience. These experience will mimic 4 aspects of vision namely: (1) Look; (2) Focus through use of controller; (3) Observe and (4) Enjoy which includes activation of particles
 
 ## View our project at https://heroic-croissant-9334b4.netlify.app/
 
 ![Screenshot](screen.png)
 
 ### Projects used
-AI - Yolo : https://github.com/wojciechp6/YOLO-UnityBarracuda
-UnityNativeCamera:  https://github.com/yasirkula/UnityNativeCamera
-ChatGPT to solve some problems ;)
+* AI - Yolo : https://github.com/wojciechp6/YOLO-UnityBarracuda 
+* UnityNativeCamera:  https://github.com/yasirkula/UnityNativeCamera 
+* ChatGPT to solve some problems ;) 
 
 ### 2020
 Toolchain:
