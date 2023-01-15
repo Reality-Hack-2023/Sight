@@ -10,6 +10,8 @@ using UnityEngine.XR;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.Interaction.Toolkit;
 
+using static YOLOHandler;
+
 public class HeadController : MonoBehaviour
 {
     [Tooltip("File of YOLO model. If you want to use another than YOLOv2 tiny, it may be necessary to change some const values in YOLOHandler.cs")]
@@ -35,7 +37,7 @@ public class HeadController : MonoBehaviour
     NNHandler nn;
     YOLOHandler yolo;
     string[] classesNames;
-
+    List<ResultBox> boxes = new List<ResultBox>();
 
 
     void Start()
@@ -57,17 +59,17 @@ public class HeadController : MonoBehaviour
 
         // Check if the angle of rotation is greater than 1 degree
         float angle = Quaternion.Angle(Quaternion.identity, deltaRotation);
-        if (angle > 1.0f)
-        {
+        //if (angle > 0.01f)
+        //{
             frameCounter++;
-        }
-        else
-        {
-            frameCounter = 0;
-        }
+        //}
+        //else
+        //{
+        //    frameCounter = 0;
+        //}
 
         // Check if the device has been moved for more than 20 frames
-        if (frameCounter > 2)
+        if (frameCounter > 800)
         {
             isMovementDetected = true;
             frameCounter = 0;
@@ -76,6 +78,9 @@ public class HeadController : MonoBehaviour
         // Do something with the device pose, for example:
         if (isMovementDetected)
         {
+
+            isMovementDetected = false;
+
             // Do something when movement is detected
             //for example setting a flag to true and use that flag in other scripts to take actions
             var path = "Assets/Sounds/";
@@ -92,7 +97,7 @@ public class HeadController : MonoBehaviour
                                       displayMaterial.mainTexture.height), 0, 0);
             image.Apply();
 
-            var boxes = yolo.Run(image);
+            boxes = yolo.Run(image);
 
             wallVideo.AddComponent<AudioSource>();
             AudioSource audioSourceTest = GetComponent<AudioSource>();
@@ -103,13 +108,20 @@ public class HeadController : MonoBehaviour
             audioSourceTest.Play();
 
 
+            if (boxes == null)
+            {
+                return;
+            }
 
-
-            foreach (var box in boxes ) {
+            foreach (var box in boxes)
+            {
                 wallVideo.AddComponent<AudioSource>();
                 AudioSource audioSource = GetComponent<AudioSource>();
 
-                switch (box.bestClassIdx) {
+
+
+                switch (box.bestClassIdx)
+                {
                     case 0:
                         path += "Alive_Object_loop_C.wav";
                         break;
@@ -171,9 +183,30 @@ public class HeadController : MonoBehaviour
                 }
                 audioSource.clip = Resources.Load<AudioClip>(path);
                 audioSource.loop = false;
-                audioSource.volume= box.confidence;
+                audioSource.volume = box.confidence;
                 audioSource.Play();
+
+
+                // Define the position and size of the rectangle
+
+                // Draw a red rectangle on the image
+                for (int i = (int)box.rect.x; i < box.rect.x + box.rect.width; i++)
+                {
+                    for (int j = (int)box.rect.y; j < box.rect.y + box.rect.height; j++)
+                    {
+                        image.SetPixel(i, j, Color.red);
+                    }
+                }
+                image.Apply();
+
+                displayMaterial.mainTexture = image;
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        nn.Dispose();
+        yolo.Dispose();
     }
 }
