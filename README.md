@@ -9,6 +9,11 @@
 
 ![Screenshot](screen.png)
 
+### Projects used
+AI - Yolo : https://github.com/wojciechp6/YOLO-UnityBarracuda
+UnityNativeCamera:  https://github.com/yasirkula/UnityNativeCamera
+ChatGPT to solve some problems ;)
+
 ### 2020
 Toolchain:
 * Android Studio 4.0.1
@@ -16,7 +21,9 @@ Toolchain:
 * Android NDK (Side by side) 21.3.6528147
 * CMake 3.4.1
 * Unity Hub 2.3.2
-* Unity 2020.1.3f1
+* Unity 2020.3.35f1
+* Qualcomm Snapdragon Spaces 0.9.0
+* AI - Unity Barracuda 1.0.4
 
 ## Troubleshooting
 
