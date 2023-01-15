@@ -7,6 +7,8 @@
 
 ## View our project at https://heroic-croissant-9334b4.netlify.app/
 
+## Second project repo: https://github.com/Reality-Hack-2023/REPO-026
+
 ![Screenshot](screen.png)
 
 ### Projects used
